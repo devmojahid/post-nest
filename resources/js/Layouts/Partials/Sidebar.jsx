@@ -5,7 +5,7 @@ import { IconChevronsLeft, IconMenu2, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 
 import { Layout } from "./Layout";
-import Button from "@/Components/Button";
+import { Button } from "@/Components/ui/button";
 import Nav from "@/Components/Nav";
 import { SidebarLinks } from "./SidebarLinks";
 

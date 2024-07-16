@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/react";
 import { IconChevronDown } from "@tabler/icons-react";
-import Button from "@/Components/Button";
+import { Button, buttonVariants } from "@/Components/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
@@ -67,7 +67,7 @@ function NavLink({ title, icon, label, href, closeNav, subLink = false }) {
   const { checkActiveNav } = useCheckActiveNav();
   return (
     <Link
-      to={href}
+      href={href}
       onClick={closeNav}
       className={cn(
         buttonVariants({

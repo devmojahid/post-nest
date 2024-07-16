@@ -27,19 +27,31 @@ export const SidebarLinks = [
   {
     title: "Dashboard",
     label: "",
-    href: "/",
+    href: "/dashboard",
     icon: <IconLayoutDashboard size={18} />,
   },
   {
-    title: "Tasks",
+    title: "Users",
     label: "3",
-    href: "/tasks",
+    href: "/users",
     icon: <IconChecklist size={18} />,
   },
   {
-    title: "Requests",
+    title: "Comming Soon",
+    label: "3",
+    href: "/comming-soon",
+    icon: <IconChecklist size={18} />,
+  },
+  {
+    title: "404 Error",
+    label: "3",
+    href: "/error-404",
+    icon: <IconError404 size={18} />,
+  },
+  {
+    title: "Sub Menu",
     label: "10",
-    href: "/requests",
+    href: "/sub-menu",
     icon: <IconRouteAltLeft size={18} />,
     sub: [
       {
