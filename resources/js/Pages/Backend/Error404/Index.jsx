@@ -3,7 +3,6 @@ import React from "react";
 import BlankLayout from "../BlankLayout";
 import { Button } from "@/Components/ui/button";
 // inertia link
-import { InertiaLink } from "@inertiajs/inertia-react";
 
 const Index = () => {
   return (
@@ -19,9 +18,7 @@ const Index = () => {
             </p>
             <div className="mt-6 flex gap-4">
               <Button variant="outline">Go Back</Button>
-              <Button onClick={() => (window.location.href = "/")}>
-                Back to Home
-              </Button>
+              <Button>Back to Home</Button>
             </div>
           </div>
         </div>
