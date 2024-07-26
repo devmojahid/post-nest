@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -20,7 +19,7 @@ import {
   TableRow,
 } from "@/Components/ui/table";
 
-import { DataTablePagination } from "../components/data-table-pagination";
+import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "../components/data-table-toolbar";
 
 export function DataTable({ columns, data }) {

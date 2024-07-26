@@ -17,7 +17,9 @@ const Index = () => {
               does not exist or might have been removed.
             </p>
             <div className="mt-6 flex gap-4">
-              <Button variant="outline">Go Back</Button>
+              <Button variant="outline" onClick={() => window.history.back()}>
+                Go Back
+              </Button>
               <Button>Back to Home</Button>
             </div>
           </div>

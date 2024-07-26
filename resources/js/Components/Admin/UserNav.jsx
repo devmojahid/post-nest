@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 import { Button } from "@/Components/ui/button";
+import { Link } from "@inertiajs/react";
 
 export function UserNav() {
   return (
@@ -50,7 +51,9 @@ export function UserNav() {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          Log out
+          <Link href={route("logout")} method="post" as="button">
+            Log out
+          </Link>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -3,7 +3,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
-import { DataTableViewOptions } from "../components/data-table-view-options";
+import { DataTableViewOptions } from "./data-table-view-options";
 
 import { priorities, statuses } from "../data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";

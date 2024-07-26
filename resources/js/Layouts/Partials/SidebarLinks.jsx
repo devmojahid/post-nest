@@ -49,6 +49,11 @@ export const SidebarLinks = [
     icon: <IconError404 size={18} />,
   },
   {
+    title: "Apps",
+    href: "/apps",
+    icon: <IconApps size={18} />,
+  },
+  {
     title: "Sub Menu",
     label: "10",
     href: "/sub-menu",

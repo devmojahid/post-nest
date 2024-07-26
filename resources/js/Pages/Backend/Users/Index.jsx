@@ -1,6 +1,9 @@
 import { Layout } from "@/Layouts/Partials/Layout";
 import React from "react";
 import ContentLayout from "../ContentLayout";
+import { DataTable } from "./components/data-table";
+import { tasks } from "./data/tasks";
+import { columns } from "./components/columns";
 
 const Index = () => {
   return (
@@ -15,7 +18,7 @@ const Index = () => {
           </div>
         </div>
         <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0">
-          {/* <DataTable data={tasks} columns={columns} /> */}
+          <DataTable data={tasks} columns={columns} />
         </div>
       </Layout.Body>
     </ContentLayout>

@@ -34,6 +34,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/error-404', function () {
         return Inertia::render('Backend/Error404/Index');
     });
+
+    Route::get('/apps', function () {
+        return Inertia::render('Backend/Apps/Index');
+    });
+
+    Route::get("/settings/profile", function () {
+        return Inertia::render('Backend/Settings/Profile/Index');
+    });
+    Route::get('/settings/account', function () {
+        return Inertia::render('Backend/Settings/Account/Index');
+    });
 });
 
 
