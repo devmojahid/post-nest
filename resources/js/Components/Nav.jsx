@@ -71,10 +71,10 @@ function NavLink({ title, icon, label, href, closeNav, subLink = false }) {
       onClick={closeNav}
       className={cn(
         buttonVariants({
-          variant: checkActiveNav(href) ? "secondary" : "ghost",
+          variant: checkActiveNav(href) ? "primary" : "ghost",
           size: "sm",
         }),
-        "h-12 justify-start text-wrap rounded-none px-6",
+        `h-12 justify-start text-wrap px-5 ${checkActiveNav(href) ? "bg-primary rounded-sm text-white" : ""}`,
         subLink && "h-10 w-full border-l border-l-slate-500 px-2"
       )}
       aria-current={checkActiveNav(href) ? "page" : undefined}

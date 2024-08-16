@@ -82,8 +82,7 @@ export default function Sidebar({ className, isCollapsed, setIsCollapsed }) {
                 isCollapsed ? "invisible w-0" : "visible w-auto"
               }`}
             >
-              <span className="font-medium">Shadcn Admin</span>
-              <span className="text-xs">Vite + ShadcnUI</span>
+              <span className="font-medium">Mojar Admin</span>
             </div>
           </div>
 

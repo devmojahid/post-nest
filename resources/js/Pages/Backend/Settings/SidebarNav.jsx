@@ -48,7 +48,7 @@ export default function SidebarNav({ className, items, ...props }) {
           )}
           {...props}
         >
-          {items.map((item) => (
+          {items.map((item, index) => (
             // <Link
             //   key={item.href}
             //   to={item.href}
@@ -65,6 +65,7 @@ export default function SidebarNav({ className, items, ...props }) {
             // </Link>
             <Link
               href={item.href}
+              key={index}
               //   className={cn(
               //     buttonVariants({ variant: "ghost" }),
               //     pathname === item.href

@@ -1,6 +1,5 @@
 import { Layout } from "@/Layouts/Partials/Layout";
 import React from "react";
-import CommingSoon from "@/Components/Others/CommingSoon";
 import ContentLayout from "../ContentLayout";
 import { Separator } from "@/Components/ui/separator";
 import {
@@ -55,9 +54,9 @@ const sidebarNavItems = [
     href: "/settings/account",
   },
   {
-    title: "Appearance",
+    title: "Configurations",
     icon: <IconPalette size={18} />,
-    href: "/settings/appearance",
+    href: "/settings/configurations",
   },
   {
     title: "Notifications",

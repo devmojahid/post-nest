@@ -32,7 +32,6 @@ export const SidebarLinks = [
   },
   {
     title: "Users",
-    label: "3",
     href: "/users",
     icon: <IconChecklist size={18} />,
   },
@@ -44,38 +43,30 @@ export const SidebarLinks = [
   },
   {
     title: "404 Error",
-    label: "3",
     href: "/error-404",
     icon: <IconError404 size={18} />,
   },
   {
-    title: "Apps",
-    href: "/apps",
+    title: "All Generators",
+    href: "/all-gnerators",
     icon: <IconApps size={18} />,
   },
   {
-    title: "Sub Menu",
-    label: "10",
+    title: "Settings",
     href: "/sub-menu",
     icon: <IconRouteAltLeft size={18} />,
     sub: [
       {
-        title: "Trucks",
-        label: "9",
-        href: "/trucks",
+        title: "Profile",
+        href: "/settings/profile",
         icon: <IconTruck size={18} />,
       },
       {
-        title: "Cargos",
+        title: "Account",
         label: "",
-        href: "/cargos",
+        href: "/settings/account",
         icon: <IconBoxSeam size={18} />,
       },
     ],
   },
-  //   {
-  //     name: "Users",
-  //     route: "users",
-  //     icon: IconUsers,
-  //   },
 ];
