@@ -28,7 +28,7 @@ import { Input } from "@/Components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/Components/ui/sheet";
 import Sidebar from "./Partials/Sidebar/Sidebar";
 
-const AdminDashboard = ({ children }) => {
+const AdminLayout = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -114,4 +114,4 @@ const AdminDashboard = ({ children }) => {
   );
 };
 
-export default AdminDashboard;
+export default AdminLayout;

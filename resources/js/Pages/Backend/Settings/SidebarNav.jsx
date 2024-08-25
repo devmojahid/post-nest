@@ -40,12 +40,9 @@ export default function SidebarNav({ className, items, ...props }) {
         </Select>
       </div>
 
-      <div className="hidden w-full overflow-x-auto bg-background px-1 py-2 md:block">
+      <div className="mx-auto grid w-full max-w-6xl items-start gap-6 md:grid-cols-[180px_1fr] lg:grid-cols-[250px_1fr]">
         <nav
-          className={cn(
-            "flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1",
-            className
-          )}
+          className={cn("grid text-sm text-muted-foreground", className)}
           {...props}
         >
           {items.map((item, index) => (
@@ -73,7 +70,7 @@ export default function SidebarNav({ className, items, ...props }) {
               //       : "hover:bg-transparent hover:underline",
               //     "justify-start"
               //   )}
-              className="hover:bg-transparent hover:underline justify-start inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2"
+              className="hover:bg-transparent justify-start inline-flex items-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2"
             >
               <span className="mr-2">{item.icon}</span>
               {item.title}

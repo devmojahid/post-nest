@@ -8,6 +8,14 @@ import InputLabel from "@/Components/InputLabel";
 import { Input } from "@/Components/ui/input";
 import InputError from "@/Components/InputError";
 import { Button } from "@/Components/Others/CustomButton";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/Components/ui/card";
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { data, setData, post, processing, errors, reset } = useForm({
@@ -28,11 +36,22 @@ const Index = () => {
     <SettingsLayout>
       <Head title="Profile Settings" />
       <div className="flex flex-1 flex-col">
-        <div className="flex-none">
-          <h3 className="text-lg font-medium">Profile</h3>
-          <p className="text-sm text-muted-foreground">This Is Profile</p>
-        </div>
-        <Separator className="my-4 flex-none" />
+        <Card x-chunk="dashboard-04-chunk-1">
+          <CardHeader>
+            <CardTitle>Store Name</CardTitle>
+            <CardDescription>
+              Used to identify your store in the marketplace.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form>
+              <Input placeholder="Store Name" />
+            </form>
+          </CardContent>
+          <CardFooter className="border-t px-6 py-4">
+            <Button>Save</Button>
+          </CardFooter>
+        </Card>
         <div className="faded-bottom -mx-4 flex-1 overflow-auto scroll-smooth px-4 md:pb-16">
           <div className="lg:max-w-xl">
             <form onSubmit={submit}>

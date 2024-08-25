@@ -1,28 +1,49 @@
-import { Layout } from "@/Layouts/Partials/Layout";
 import React from "react";
-import ContentLayout from "../ContentLayout";
 // Data table
 import { DataTable } from "./Partials/List/data-table";
 import { columns } from "./Partials/List/columns";
 import { Head } from "@inertiajs/react";
-  
-const Index = ({users}) => {
+import AdminLayout from "@/Layouts/Admin/AdminLayout";
+import { Card, CardHeader, CardTitle } from "@/Components/ui/card";
+import { Button } from "@/Components/ui/button";
+import { PlusCircle } from "lucide-react";
+
+const Index = ({ users }) => {
   const othersInfo = {
     name: "Users",
-    createLink: route('users.create'),
-    createText: 'Create User',
+    createLink: route("users.create"),
+    createText: "Create User",
     search: true,
-    searchIdentifier: 'name',
-  }
+    searchIdentifier: "name",
+  };
   return (
-    <ContentLayout>
+    <AdminLayout>
       <Head title="Users" />
-      <Layout.Body>
-        <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0 h-screen">
-          <DataTable data={users.data} columns={columns} othersInfo={othersInfo} />
-        </div>
-      </Layout.Body>
-    </ContentLayout>
+      <Card className="title-card">
+        <CardHeader className="title-card-head">
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>Users</CardTitle>
+            </div>
+            <div>
+              <Button size="sm" className="h-8 gap-1">
+                <PlusCircle className="h-3.5 w-3.5" />
+                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                  Add Product
+                </span>
+              </Button>
+            </div>
+          </div>
+        </CardHeader>
+      </Card>
+      <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0 h-screen">
+        <DataTable
+          data={users.data}
+          columns={columns}
+          othersInfo={othersInfo}
+        />
+      </div>
+    </AdminLayout>
   );
 };
 
