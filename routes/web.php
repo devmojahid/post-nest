@@ -59,6 +59,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         // });
     });
 
+    Route::get('/dashboard-2', function () {
+        return Inertia::render('Backend/Dashboard');
+    })->name('dashboard');
+
     Route::get('/dashboard', function () {
         return Inertia::render('Backend/Dashboard');
     })->name('dashboard');
