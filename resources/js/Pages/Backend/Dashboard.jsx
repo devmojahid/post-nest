@@ -34,6 +34,7 @@ import {
 } from "@/Components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs";
 import AdminLayout from "@/Layouts/Admin/AdminLayout";
+import { Head } from "@inertiajs/react";
 import {
   Activity,
   ChevronLeft,
@@ -53,6 +54,7 @@ import React from "react";
 const Dashboard = () => {
   return (
     <AdminLayout>
+      <Head title="Dashboard" />
       <Card className="title-card">
         <CardHeader className="title-card-head">
           <div className="flex items-center justify-between">

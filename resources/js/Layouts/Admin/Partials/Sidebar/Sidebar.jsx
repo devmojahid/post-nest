@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import {
   ArrowDown,
   ArrowRight,
@@ -19,11 +19,15 @@ import {
 import { SidebarLinks } from "./SidebarAllLinks";
 
 const Sidebar = ({ isMobile = false }) => {
+  const { url } = usePage();
   const [openMenu, setOpenMenu] = useState(null);
 
   const handleToggle = (menuTitle) => {
     setOpenMenu(openMenu === menuTitle ? null : menuTitle);
   };
+
+  const isActive = (href) => url === href;
+  console.log(isActive);
 
   return (
     <nav
@@ -38,7 +42,8 @@ const Sidebar = ({ isMobile = false }) => {
             <button
               onClick={() => handleToggle(item.title)}
               className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary w-full text-left ${
-                isMobile ? "text-muted-foreground" : "text-muted-foreground"
+                (isMobile ? "text-muted-foreground" : "text-muted-foreground",
+                isActive(item.href) ? "text-primary" : "")
               }`}
             >
               {item.icon}

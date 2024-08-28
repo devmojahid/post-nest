@@ -20,7 +20,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // user managment
     Route::resource('users', UserController::class)->except(['show']);
 
-
     Route::group(['prefix' => 'settings'], function () {
         Route::get("profile", function () {
             return Inertia::render('Backend/Settings/Profile/Index');
@@ -39,6 +38,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('writers', function () {
             return Inertia::render('Backend/AI/Writers/Index');
         });
+
+        Route::get('content-generator', function () {
+            return Inertia::render('Backend/AI/Content/Generator/Index');
+        });
+
+        Route::get('image-generator', function () {
+            return Inertia::render('Backend/AI/Image/Index');
+        });
+
         // Route::get('speech-to-text', function () {
         //     return Inertia::render('Backend/AI/SpeechToText/Index');
         // });
@@ -58,10 +66,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         //     return Inertia::render('Backend/AI/SpeechToImage/Index');
         // });
     });
-
-    Route::get('/dashboard-2', function () {
-        return Inertia::render('Backend/Dashboard');
-    })->name('dashboard');
 
     Route::get('/dashboard', function () {
         return Inertia::render('Backend/Dashboard');

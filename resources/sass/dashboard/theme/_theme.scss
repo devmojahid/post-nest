@@ -265,15 +265,15 @@ input[type="password"],
 input[type="url"],
 textarea{
 	outline: none;
-	background-color: #fff;
-	height: 56px;
-	width: 100%;
-	line-height: 56px;
-	font-size: 14px;
-	color: var(--tp-common-black);
-	padding-left: 26px;
-	padding-right: 26px;
-	border: 1px solid #E0E2E3;
+    background-color: #fff;
+    height: 45px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 14px;
+    color: var(--tp-common-black);
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #E0E2E3;
 
 	@include tp-placeholder{
 		color: #95999D;

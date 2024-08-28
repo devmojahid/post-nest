@@ -1,7 +1,4 @@
-import { Layout } from "@/Layouts/Partials/Layout";
 import React from "react";
-import ContentLayout from "../ContentLayout";
-import { Separator } from "@/Components/ui/separator";
 import {
   IconBrowserCheck,
   IconExclamationCircle,

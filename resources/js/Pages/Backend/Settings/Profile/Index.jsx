@@ -1,9 +1,7 @@
-import { Layout } from "@/Layouts/Partials/Layout";
 import React, { useState } from "react";
 import ContentLayout from "../../ContentLayout";
 import SettingsLayout from "../Index";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { Separator } from "@/Components/ui/separator";
 import InputLabel from "@/Components/InputLabel";
 import { Input } from "@/Components/ui/input";
 import InputError from "@/Components/InputError";
