@@ -7,16 +7,12 @@ import AdminLayout from "@/Layouts/Admin/AdminLayout";
 import { Card, CardHeader, CardTitle } from "@/Components/ui/card";
 import { Button } from "@/Components/ui/button";
 import { PlusCircle } from "lucide-react";
-import { Link } from "@inertiajs/react";
-import { CustomLink } from "@/Components/Others/CustomButton";
-import { IconPencilPlus } from "@tabler/icons-react";
-import { Input } from "@/Components/ui/input";
 
-const Index = ({ users }) => {
+const Index = ({ plugins }) => {
   const othersInfo = {
-    name: "Users",
+    name: "Plugins",
     createLink: route("users.create"),
-    createText: "Create User",
+    createText: "Add Plugin",
     search: true,
     searchIdentifier: "name",
   };
@@ -30,23 +26,18 @@ const Index = ({ users }) => {
               <CardTitle>Users</CardTitle>
             </div>
             <div>
-              <CustomLink
-                href={othersInfo.createLink}
-                variant="ghost"
-                leftSection={<IconPencilPlus className="h-4 w-4" />}
-              >
-                Create User
-              </CustomLink>
+              <Button size="sm" className="h-8 gap-1">
+                <PlusCircle className="h-3.5 w-3.5" />
+                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                  Add Product
+                </span>
+              </Button>
             </div>
           </div>
         </CardHeader>
       </Card>
       <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0 h-screen">
-        <DataTable
-          data={users.data}
-          columns={columns}
-          othersInfo={othersInfo}
-        />
+        <DataTable data={plugins} columns={columns} othersInfo={othersInfo} />
       </div>
     </AdminLayout>
   );

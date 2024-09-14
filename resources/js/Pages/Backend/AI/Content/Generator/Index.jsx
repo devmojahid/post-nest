@@ -1,4 +1,4 @@
-import { Badge } from "@/Components/ui/badge";
+import React, { useState } from "react";
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
 import { Label } from "@/Components/ui/label";
@@ -14,7 +14,6 @@ import { TooltipProvider } from "@/Components/ui/tooltip";
 import AdminLayout from "@/Layouts/Admin/AdminLayout";
 import { Bot, CornerDownLeft, Settings } from "lucide-react";
 import { Card, CardHeader, CardTitle } from "@/Components/ui/card";
-import React from "react";
 import {
   Drawer,
   DrawerContent,
@@ -24,19 +23,26 @@ import {
   DrawerTrigger,
 } from "@/Components/ui/drawer";
 import { Head } from "@inertiajs/react";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/Components/ui/hover-card";
+import { Slider } from "@/Components/ui/slider";
 
 const Index = () => {
+  const [tempValue, setTempValue] = useState([0.5]);
   return (
     <AdminLayout>
       <TooltipProvider>
-        <Head title="Ai Content" />
+        <Head title="Ai Image" />
         <Card className="title-card">
           <CardHeader className="title-card-head">
             <div className="flex items-center justify-between">
               <div>
                 <CardTitle className="flex items-center gap-2">
                   <Bot className="size-5" />
-                  <span>AI Content Generator</span>
+                  <span>AI Image Generator</span>
                 </CardTitle>
               </div>
               <div>
@@ -120,10 +126,40 @@ const Index = () => {
                     <legend className="-ml-1 px-1 text-sm font-medium">
                       Settings
                     </legend>
+                    {/* Temperature */}
                     <div className="grid gap-3">
-                      <Label htmlFor="temperature">Temperature</Label>
-                      <Input id="temperature" type="number" placeholder="0.4" />
+                      <HoverCard openDelay={200}>
+                        <HoverCardTrigger asChild>
+                          <div className="grid gap-4">
+                            <div className="flex items-center justify-between">
+                              <Label htmlFor="temperature">Temperature</Label>
+                              <span className="w-12 rounded-md border border-transparent px-2 py-0.5 text-right text-sm text-muted-foreground hover:border-border">
+                                {tempValue}
+                              </span>
+                            </div>
+                            <Slider
+                              id="temperature"
+                              max={1}
+                              defaultValue={tempValue}
+                              step={0.1}
+                              onValueChange={setTempValue}
+                              className="[&_[role=slider]]:h-4 [&_[role=slider]]:w-4"
+                              aria-label="Temperature"
+                            />
+                          </div>
+                        </HoverCardTrigger>
+                        <HoverCardContent
+                          align="start"
+                          className="w-[260px] text-sm"
+                          side="left"
+                        >
+                          Controls randomness: lowering results in less random
+                          completions. As the temperature approaches zero, the
+                          model will become deterministic and repetitive.
+                        </HoverCardContent>
+                      </HoverCard>
                     </div>
+                    {/* role */}
                     <div className="grid gap-3">
                       <Label htmlFor="role">Role</Label>
                       <Select defaultValue="system">
@@ -140,56 +176,50 @@ const Index = () => {
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="grid gap-3">
-                      <Label htmlFor="content">Content</Label>
-                      <Textarea
-                        id="content"
-                        placeholder="You are a..."
-                        className="min-h-[9.5rem]"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="grid gap-3">
-                        <Label htmlFor="top-p">Top P</Label>
-                        <Input id="top-p" type="number" placeholder="0.7" />
-                      </div>
-                      <div className="grid gap-3">
-                        <Label htmlFor="top-k">Top K</Label>
-                        <Input id="top-k" type="number" placeholder="0.0" />
-                      </div>
-                    </div>
                   </fieldset>
                 </form>
               </div>
-              <div className="relative flex flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2 h-[32rem]">
-                <div>
+              <div className="relative flex flex-col rounded-xl bg-muted/50 p-4 lg:col-span-2 overflow-hidden h-[32rem]">
+                <div className="h-[28rem] overflow-y-auto">
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg font-semibold">Chat</h2>
-                    <Button variant="outline" size="sm">
-                      Clear Chat
-                    </Button>
+                    <div className="button-group flex gap-1">
+                      <Button variant="default" size="sm">
+                        Copy Content
+                      </Button>
+                      <Button variant="destructive" size="sm">
+                        Clear Chat
+                      </Button>
+                    </div>
                   </div>
                 </div>
+
                 <div className="flex-1" />
-                <form
-                  className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
-                  x-chunk="dashboard-03-chunk-1"
-                >
-                  <Label htmlFor="message" className="sr-only">
-                    Message
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Type your message here..."
-                    className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
-                  />
-                  <div className="flex items-center p-3 pt-0">
-                    <Button type="submit" size="sm" className="ml-auto gap-1.5">
-                      Send Message
-                      <CornerDownLeft className="size-3.5" />
-                    </Button>
-                  </div>
-                </form>
+                <div className="h-18 mb-3 mt-4">
+                  <form
+                    className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
+                    x-chunk="dashboard-03-chunk-1"
+                  >
+                    <Label htmlFor="message" className="sr-only">
+                      Message
+                    </Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Type your message here..."
+                      className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0"
+                    />
+                    <div className="flex items-center p-3 pt-0">
+                      <Button
+                        type="submit"
+                        size="sm"
+                        className="ml-auto gap-1.5"
+                      >
+                        Send Message
+                        <CornerDownLeft className="size-3.5" />
+                      </Button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

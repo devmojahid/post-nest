@@ -1,4 +1,3 @@
-import { Badge } from "@/Components/ui/badge";
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
 import { Label } from "@/Components/ui/label";
@@ -238,7 +237,7 @@ const Index = () => {
                 </div>
 
                 <div className="flex-1" />
-                <div className="h-12 mb-3 mt-4">
+                <div className="h-18 mb-3 mt-4">
                   <form
                     className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
                     x-chunk="dashboard-03-chunk-1"

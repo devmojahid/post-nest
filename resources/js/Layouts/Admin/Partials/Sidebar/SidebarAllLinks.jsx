@@ -1,26 +1,12 @@
 import {
   IconApps,
-  IconBarrierBlock,
   IconBoxSeam,
-  IconChartHistogram,
   IconChecklist,
-  IconComponents,
-  IconError404,
-  IconExclamationCircle,
-  IconHexagonNumber1,
-  IconHexagonNumber2,
-  IconHexagonNumber3,
-  IconHexagonNumber4,
-  IconHexagonNumber5,
   IconLayoutDashboard,
-  IconMessages,
+  IconPhotoScan,
   IconRouteAltLeft,
-  IconServerOff,
-  IconSettings,
   IconTruck,
-  IconUserShield,
-  IconUsers,
-  IconLock,
+  IconUsersGroup,
 } from "@tabler/icons-react";
 
 export const SidebarLinks = [
@@ -33,18 +19,19 @@ export const SidebarLinks = [
   {
     title: "Users",
     href: "/users",
-    icon: <IconChecklist size={18} />,
+    icon: <IconUsersGroup size={18} />,
   },
   {
-    title: "Comming Soon",
-    href: "/comming-soon",
-    icon: <IconChecklist size={18} />,
+    title: "Content Generator",
+    href: "/ai/content-generator",
+    icon: <IconPhotoScan size={18} />,
   },
   {
-    title: "404 Error",
-    href: "/error-404",
-    icon: <IconError404 size={18} />,
+    title: "Image Generator",
+    href: "/ai/image-generator",
+    icon: <IconPhotoScan size={18} />,
   },
+
   {
     title: "All Generators",
     href: "/all-gnerators",

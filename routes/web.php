@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AIConfigurationController;
+use App\Http\Controllers\Generators\AIContentGeneratorController;
+use App\Http\Controllers\PluginManagerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
@@ -39,9 +41,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             return Inertia::render('Backend/AI/Writers/Index');
         });
 
-        Route::get('content-generator', function () {
-            return Inertia::render('Backend/AI/Content/Generator/Index');
-        });
+        // content generator
+
+        Route::get('content-generator', [AIContentGeneratorController::class, 'index']);
+        Route::post('content-generator', [AIContentGeneratorController::class, 'generateText'])->name('content-generator.generateText');
 
         Route::get('image-generator', function () {
             return Inertia::render('Backend/AI/Image/Index');
@@ -79,9 +82,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('Backend/Error404/Index');
     });
 
+    Route::get('/plugins', [PluginManagerController::class, 'index'])->name('plugins.index');
+
     Route::get('/all-gnerators', function () {
         return Inertia::render('Backend/Gnerators/Index');
     });
+});
+
+Route::get('/dashboard-2', function () {
+    return Inertia::render('Backend/Dashboard2');
 });
 
 
