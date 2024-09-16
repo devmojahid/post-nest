@@ -27,7 +27,6 @@ const Sidebar = ({ isMobile = false }) => {
   };
 
   const isActive = (href) => url === href;
-  console.log(isActive);
 
   return (
     <nav

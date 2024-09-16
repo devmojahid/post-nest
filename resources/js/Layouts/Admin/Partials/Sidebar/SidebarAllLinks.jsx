@@ -3,6 +3,8 @@ import {
   IconBoxSeam,
   IconChecklist,
   IconLayoutDashboard,
+  IconMessages,
+  IconPencilCheck,
   IconPhotoScan,
   IconRouteAltLeft,
   IconTruck,
@@ -24,14 +26,23 @@ export const SidebarLinks = [
   {
     title: "Content Generator",
     href: "/ai/content-generator",
-    icon: <IconPhotoScan size={18} />,
+    icon: <IconPencilCheck size={18} />,
   },
   {
     title: "Image Generator",
     href: "/ai/image-generator",
     icon: <IconPhotoScan size={18} />,
   },
-
+  {
+    title: "Companion",
+    href: "/ai/companion",
+    icon: <IconMessages size={18} />,
+  },
+  {
+    title: "All Templates",
+    href: "/ai/content-templates",
+    icon: <IconChecklist size={18} />,
+  },
   {
     title: "All Generators",
     href: "/all-gnerators",

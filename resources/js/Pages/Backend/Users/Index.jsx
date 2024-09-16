@@ -32,7 +32,7 @@ const Index = ({ users }) => {
             <div>
               <CustomLink
                 href={othersInfo.createLink}
-                variant="ghost"
+                variant="secondary"
                 leftSection={<IconPencilPlus className="h-4 w-4" />}
               >
                 Create User

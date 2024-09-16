@@ -42,32 +42,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
 
         // content generator
-
-        Route::get('content-generator', [AIContentGeneratorController::class, 'index']);
-        Route::post('content-generator', [AIContentGeneratorController::class, 'generateText'])->name('content-generator.generateText');
+        Route::match(['GET', "POST"], 'content-generator', [AIContentGeneratorController::class, 'index'])->name('content-generator.index');
 
         Route::get('image-generator', function () {
             return Inertia::render('Backend/AI/Image/Index');
         });
 
-        // Route::get('speech-to-text', function () {
-        //     return Inertia::render('Backend/AI/SpeechToText/Index');
-        // });
-        // Route::get('image-to-text', function () {
-        //     return Inertia::render('Backend/AI/ImageToText/Index');
-        // });
-        // Route::get('text-to-image', function () {
-        //     return Inertia::render('Backend/AI/TextToImage/Index');
-        // });
-        // Route::get('image-to-image', function () {
-        //     return Inertia::render('Backend/AI/ImageToImage/Index');
-        // });
-        // Route::get('image-to-speech', function () {
-        //     return Inertia::render('Backend/AI/ImageToSpeech/Index');
-        // });
-        // Route::get('speech-to-image', function () {
-        //     return Inertia::render('Backend/AI/SpeechToImage/Index');
-        // });
+        Route::get('/companion', function () {
+            return Inertia::render("Backend/AI/Companion/Index");
+        });
+
+        Route::get('/companion/{companion}', function ($companion) {
+            return Inertia::render("Backend/AI/Companion/Single", ['companion' => $companion]);
+        });
     });
 
     Route::get('/dashboard', function () {
@@ -76,10 +63,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/comming-soon', function () {
         return Inertia::render('Backend/CommingSoon/Index');
-    });
-
-    Route::get('/error-404', function () {
-        return Inertia::render('Backend/Error404/Index');
     });
 
     Route::get('/plugins', [PluginManagerController::class, 'index'])->name('plugins.index');

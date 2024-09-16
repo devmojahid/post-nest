@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\RateLimiter;
 
 class AIContentGeneratorController extends Controller
 {
@@ -27,57 +28,46 @@ class AIContentGeneratorController extends Controller
     /** @var string */
     protected string $endPoint = 'https://api.openai.com/v1/chat/completions';
 
-    public function index()
+    public function index(Request $request)
     {
-        return Inertia::render('Backend/AI/Content/Generator/Index');
-    }
+        // Throttle requests to avoid hitting rate limits
+        $key = 'openai-rate-limiter:' . $request->ip();
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            return response()->json(['error' => 'Too many requests. Try again later.'], 429);
+        }
 
-    public function generateText(Request $request)
-    {
-        $request->validate([
-            'text_prompt' => 'required|string',
-            'model' => 'required|string|in:' . implode(',', $this->allowedModels),
+        RateLimiter::hit($key, 60); // Allows 5 attempts per minute
+
+        $generatedText = null;
+        if ($request->isMethod('POST')) {
+            $request->validate([
+                'text_prompt' => 'required|string',
+                'model' => 'required|string|in:' . implode(',', $this->allowedModels),
+            ]);
+
+            $this->apiKey = config('configuration.openai_api_key');
+            $this->model = $request->input('model');
+            $this->contentQuery = $request->input('text_prompt');
+            $this->temperature = $request->input('temperature');
+
+            $generatedText = $this->callAIModel();
+        }
+        return Inertia::render('Backend/AI/Content/Generator/Index', [
+            'generatedText' => $generatedText
         ]);
-
-        $this->apiKey = config('configuration.openai_api_key');
-        $this->model = $request->input('model');
-        $this->contentQuery = $request->input('text_prompt');
-        $this->temperature = $request->input('temperature');
-
-        $response = $this->callAIModel();
-
-        return response()->json([
-            'data' => $response
-        ]);
-
-
-        // Logic to interact with AI API (e.g., OpenAI API, GPT-4)
-        // $generatedText = $this->callAIModel($request->input('text_prompt'));
-
-        // Store the result in the database
-        // AITextGenerator::create([
-        //     'api_key' => $request->input('api_key'),
-        //     'text_prompt' => $request->input('text_prompt'),
-        //     'generated_text' => $generatedText,
-        // ]);
-
-        // return redirect()->route('ai-text-generator.index')->with('success', 'Text Generated Successfully');
     }
 
     protected function callAIModel()
     {
-        // // Call AI models using a 3rd party REST API
-        // $response = Http::post('https://api.openai.com/v1/completions', [
-        //     'model' => 'gpt-4',
-        //     'prompt' => $prompt,
-        // ]);
+        $response = Http::withToken($this->apiKey)
+            ->acceptJson()
+            ->retry(3, 1000)  // Retry 3 times, with 1-second intervals between retries
+            ->post($this->endPoint, [
+                "model" => $this->model,
+                "messages" => [["role" => "user", "content" => $this->contentQuery]],
+                "temperature" => $this->temperature,
+            ]);
 
-        // return $response->json('choices.0.text');
-
-        return Http::withToken($this->apiKey)->acceptJson()->post($this->endPoint, [
-            "model" => $this->model,
-            "messages" => [["role" => "user", "content" => $this->contentQuery]],
-            "temperature" => $this->temperature,
-        ]);
+        return $response;
     }
 }

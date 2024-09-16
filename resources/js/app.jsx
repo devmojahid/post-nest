@@ -1,7 +1,6 @@
 import "./bootstrap";
 import "../sass/app.scss";
 
-
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
@@ -19,10 +18,10 @@ createInertiaApp({
   setup({ el, App, props }) {
     if (import.meta.env.DEV) {
       createRoot(el).render(
-      <>
-      <App {...props} />
-      <Toaster />
-      </>
+        <>
+          <App {...props} />
+          <Toaster />
+        </>
       );
       return;
     }
@@ -31,6 +30,6 @@ createInertiaApp({
   },
   progress: {
     color: "#4B5563",
-    showSpinner: true,
+    showSpinner: false,
   },
 });
