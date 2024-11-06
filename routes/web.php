@@ -76,6 +76,26 @@ Route::get('/dashboard-2', function () {
     return Inertia::render('Backend/Dashboard2');
 });
 
+Route::get('/dashboard-3', function () {
+    return Inertia::render('Backend/Dashboard3');
+});
+
+Route::get('/dashboard-4', function () {
+    return Inertia::render('Backend/Dashboard4');
+});
+
+Route::get('/dashboard-5', function () {
+    return Inertia::render('Backend/Dashboard5');
+});
+
+Route::get('/form-1', function () {
+    return Inertia::render('Backend/Form1');
+});
+
+Route::get('/table-1', function () {
+    return Inertia::render('Backend/Table1');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

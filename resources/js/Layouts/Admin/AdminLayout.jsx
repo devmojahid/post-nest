@@ -7,6 +7,7 @@ import {
   Home,
   LineChart,
   Menu,
+  MessageSquare,
   Package,
   Package2,
   Search,
@@ -35,7 +36,7 @@ const AdminLayout = ({ children }) => {
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
+            {/* <Link href="/" className="flex items-center gap-2 font-semibold">
               <div className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -54,6 +55,13 @@ const AdminLayout = ({ children }) => {
                   <path d="M15 15v-4" />
                 </svg>
                 <span className="text-2xl font-bold text-primary">Post AI</span>
+              </div>
+            </Link> */}
+            <Link href="/">
+              <span className="sr-only">ChatGen</span>
+              <div className="flex items-center space-x-2 justify-center">
+                <MessageSquare className="h-8 w-auto sm:h-10 text-primary" />
+                <span className="text-2xl font-bold text-black">ChatGen</span>
               </div>
             </Link>
             <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
